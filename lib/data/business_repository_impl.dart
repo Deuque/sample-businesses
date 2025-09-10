@@ -1,17 +1,14 @@
-import 'package:sample_bookmarks/data/business_model.dart';
-
-abstract class BusinessRepository {
-  Future<ApiResponse<List<BusinessModel>>> businessList();
-}
+import 'package:sample_bookmarks/domain/business_model.dart';
+import 'package:sample_bookmarks/domain/business_repository.dart';
 
 class BusinessRepositoryImpl extends BusinessRepository {
   @override
-  Future<ApiResponse<List<BusinessModel>>> businessList() async {
+  Future<ApiResponse<List<BusinessModel>>> getBusinessList() async {
     //TODO: Check cache and return data
     //TODO: Or get data from remote source using Dio
 
     final response = sampleBusinessList.map(BusinessModel.fromJson).toList();
-    return ApiResponse(data: response);
+    return ApiSuccess(response);
   }
 
   final sampleBusinessList = [
@@ -33,11 +30,4 @@ class BusinessRepositoryImpl extends BusinessRepository {
       "contct_no": "+233 24 888 9999",
     },
   ];
-}
-
-class ApiResponse<T> {
-  final T? data;
-  final Object? error;
-
-  ApiResponse({this.data, this.error});
 }
