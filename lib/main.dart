@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sample_bookmarks/data/business_repository_impl.dart';
+import 'package:sample_bookmarks/presentation/business_notifier.dart';
+import 'package:sample_bookmarks/presentation/business_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => BusinessNotifier(BusinessRepositoryImpl()),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Placeholder(),
+      home: BusinessScreen(),
     );
   }
 }

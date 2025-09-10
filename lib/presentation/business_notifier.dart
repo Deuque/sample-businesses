@@ -9,7 +9,7 @@ class BusinessNotifier extends ChangeNotifier {
 
   ViewState<List<BusinessModel>> _itemState = ViewSuccess([]);
 
-  ViewState<List<BusinessModel>> get items => _itemState;
+  ViewState<List<BusinessModel>> get itemsState => _itemState;
 
   Future<void> fetchBusinessList() async {
     _itemState = ViewLoading();

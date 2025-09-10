@@ -6,7 +6,6 @@ class BusinessRepositoryImpl extends BusinessRepository {
   Future<ApiResponse<List<BusinessModel>>> getBusinessList() async {
     //TODO: Check cache and return data
     //TODO: Or get data from remote source using Dio
-
     final response = sampleBusinessList.map(BusinessModel.fromJson).toList();
     return ApiSuccess(response);
   }
